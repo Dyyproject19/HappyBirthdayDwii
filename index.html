@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Selamat Ulang Tahun 🎂</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap">
+<style>
+:root{
+  --paper:#e3c9a0; --paper-dot:#d2b283; --ink:#3b2a20; --card:#fffdf7;
+  --pink:#ff8fab; --mint:#9be3c7; --sun:#ffd166; --sky:#8ecae6; --tape:rgba(255,209,102,.8);
+  --hand:'Caveat','Patrick Hand',cursive; --body:'Patrick Hand','Comic Sans MS',cursive;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#4a3a2c;--paper-dot:#5a4836;--ink:#f6ead8;--card:#fff6e6;}
+}
+:root[data-theme="dark"]{--paper:#4a3a2c;--paper-dot:#5a4836;--ink:#f6ead8;--card:#fff6e6;}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);
+  background-image:radial-gradient(var(--paper-dot) 1.5px,transparent 1.5px);background-size:22px 22px;overflow-x:hidden}
+.polaroid p,.note,.letter{color:#3b2a20}
+
+/* cover */
+#cover{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+  background:var(--paper);background-image:radial-gradient(var(--paper-dot) 1.5px,transparent 1.5px);background-size:22px 22px;
+  padding:24px;text-align:center;transition:opacity .6s,transform .6s}
+#cover.gone{opacity:0;transform:scale(1.15);pointer-events:none}
+.env{font-size:96px;animation:wob 2s ease-in-out infinite;cursor:pointer;background:none;border:0}
+@keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg) translateY(-8px)}}
+#cover h1{font-family:var(--hand);font-size:clamp(2rem,9vw,3.2rem);margin:0}
+.btn{font-family:var(--hand);font-size:1.7rem;font-weight:700;background:var(--pink);color:#3b2a20;border:3px solid #3b2a20;
+  border-radius:14px;padding:6px 26px;box-shadow:4px 4px 0 #3b2a20;cursor:pointer}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #3b2a20}
+:focus-visible{outline:3px dashed var(--pink);outline-offset:3px}
+
+main{max-width:760px;margin:0 auto;padding:32px 16px 64px;opacity:0}
+main.show{opacity:1;transition:opacity .8s}
+
+/* judul */
+.title{text-align:center;position:relative;margin:10px 0 36px}
+.title h2{font-family:var(--hand);font-size:clamp(2.6rem,12vw,4.6rem);line-height:1;margin:0;transform:rotate(-3deg);
+  text-shadow:3px 3px 0 var(--pink)}
+.title .name{display:inline-block;background:var(--sun);color:#3b2a20;font-family:var(--hand);font-weight:700;
+  font-size:clamp(1.8rem,8vw,3rem);padding:0 18px;margin-top:10px;transform:rotate(2deg);border:3px solid #3b2a20;box-shadow:4px 4px 0 #3b2a20}
+.sticker{position:absolute;font-size:2.4rem;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(10deg)}}
+
+/* polaroid */
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:26px 18px;margin-bottom:44px}
+.polaroid{position:relative;width:min(240px,44vw);background:var(--card);padding:10px 10px 6px;box-shadow:0 6px 14px rgba(0,0,0,.3);
+  transition:transform .3s}
+.polaroid:nth-child(1){transform:rotate(-5deg)}
+.polaroid:nth-child(2){transform:rotate(4deg) translateY(14px)}
+.polaroid:nth-child(3){transform:rotate(-2deg)}
+.polaroid:nth-child(4){transform:rotate(3deg)}
+.polaroid:nth-child(5){transform:rotate(-4deg) translateY(10px)}
+.polaroid:nth-child(6){transform:rotate(2deg)}
+.polaroid:hover{transform:rotate(0) scale(1.06);z-index:3}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:84px;height:26px;margin-left:-42px;background:var(--tape);transform:rotate(-4deg);
+  box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.ph{aspect-ratio:1;background:linear-gradient(135deg,#ffe5ec,#d8f3dc);display:flex;align-items:center;justify-content:center;
+  flex-direction:column;font-size:2.2rem;color:#7a5c4a;text-align:center;overflow:hidden}
+.ph small{font-size:.95rem;padding:0 8px}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.polaroid p{font-family:var(--hand);font-size:1.35rem;font-weight:700;margin:6px 0 2px;text-align:center}
+
+/* sticky notes */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;margin-bottom:44px}
+.note{padding:22px 16px 16px;font-size:1.15rem;line-height:1.35;box-shadow:3px 5px 10px rgba(0,0,0,.25);position:relative}
+.note::before{content:"📌";position:absolute;top:-12px;left:50%;margin-left:-10px}
+.note:nth-child(1){background:var(--sun);transform:rotate(-3deg)}
+.note:nth-child(2){background:var(--mint);transform:rotate(2deg)}
+.note:nth-child(3){background:var(--pink);transform:rotate(-1.5deg)}
+.note b{font-family:var(--hand);font-size:1.6rem;display:block;line-height:1}
+
+/* surat */
+.letter{background:var(--card);padding:30px 22px 26px 56px;position:relative;box-shadow:0 8px 18px rgba(0,0,0,.3);transform:rotate(-1deg);
+  background-image:repeating-linear-gradient(transparent 0 31px,#cfe3f5 31px 32px);line-height:32px;font-size:1.25rem;margin-bottom:48px}
+.letter::before{content:"";position:absolute;left:40px;top:0;bottom:0;border-left:2px solid #f4a6b8}
+.letter h3{font-family:var(--hand);font-size:2rem;margin:0;line-height:32px}
+.letter p{margin:0 0 32px}
+.sign{font-family:var(--hand);font-size:1.9rem;text-align:right}
+
+/* kue */
+.cakebox{text-align:center;margin-bottom:30px}
+.cakebox h3{font-family:var(--hand);font-size:2.2rem;margin:0 0 6px}
+.cake{width:min(260px,70vw);cursor:pointer;background:none;border:0;padding:0}
+.flame{transform-origin:50% 100%;animation:fl .4s ease-in-out infinite alternate}
+@keyframes fl{from{transform:scale(1) rotate(-4deg)}to{transform:scale(1.15) rotate(4deg)}}
+.out .flame{display:none}
+#wish{font-family:var(--hand);font-size:1.8rem;min-height:2.4rem;margin:6px 0 0}
+footer{text-align:center;font-family:var(--hand);font-size:1.5rem}
+canvas{position:fixed;inset:0;pointer-events:none;z-index:30}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<section id="cover">
+  <button class="env" id="open" aria-label="Buka surat">💌</button>
+  <h1>Ada kejutan kecil<br>buat kamu…</h1>
+  <button class="btn" id="open2">Buka ya</button>
+</section>
+
+<main id="main">
+  <div class="title">
+    <span class="sticker" style="left:2%;top:-6px">🎈</span>
+    <span class="sticker" style="right:4%;top:20px;animation-delay:.8s">⭐</span>
+    <h2>Happy Birthday!</h2>
+    <div class="name" id="nama">NAMA</div>
+  </div>
+
+  <!-- Ganti foto: isi atribut data-foto dengan data URL / ganti isi .ph dengan <img src="..."> -->
+  <div class="wall">
+    <figure class="polaroid" style="margin:0"><div class="ph">📸<small><img src="mpa.jpeg"></small></div><p>mpa sekarang pasti udh gede 😄</p></figure>
+    <figure class="polaroid" style="margin:0"><div class="ph"><small><img src="dwi.jpeg"></small></div><p>💛</p></figure>
+    <figure class="polaroid" style="margin:0"><div class="ph">✨<small><img src="dwi smp.jpeg"></small></div><p>ini foto kamu waktu smp ternyata masih ada</p></figure>
+    <figure class="polaroid" style="margin:0"><div class="ph">✨<small><img src="berdua.jpeg"></small></div><p>lucu banget ini 😄</p></figure>
+    <figure class="polaroid" style="margin:0"><div class="ph">💛<small><img src="smp.jpeg"></small></div><p>udah lama banget ternyata masih kesimpen foto ini</p></figure>
+    <figure class="polaroid" style="margin:0"><div class="ph"><small><img src="cantik.jpeg"></small></div><p>💛</p></figure>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>Semoga…</b>kamu selalu sehat, bahagia, dan dikelilingi orang-orang yang tulus.</div>
+    <div class="note"><b>sorry ya cuma bisa bikin ini buat kamu, semoga suka ya</b></div>
+    <div class="note"><b>Doaku</b>semoga kamu bisa lulus tepat waktu dan semua impianmu satu per satu jadi nyata. 🌟</div>
+  </div>
+
+  <div class="letter">
+    <h3 id="halo">Halo, NAMA</h3>
+    <p>Hari ini hari spesialmu, jadi aku mau menyapa sebentar boleh ya hehe... gak ada maksud apa-apa, cuma pengen kamu tahu kalau kamu pernah jadi bagian cerita yang berharga buatku.</p>
+    <p>ga nyangka ya udah kepala dua haha, semoga penuh kabar baik, rezeki lancar, kuliah nya lancar, hari-hari nya menyenangkan terus, semua wishlist kamu terwujud, and hope you success in everything you do.</p>
+    <p>last  i hope someday we can meet again in the best versions of ourselves </p>
+    <p>Sekali lagi, happy birthday. Jangan lupa tiup lilinnya ya 🎂</p>
+    <div class="sign" id="dari">— PENGIRIM</div>
+  </div>
+
+  <div class="cakebox" id="cakebox">
+    <h3>Tiup lilinnya yak!</h3>
+    <button class="cake" id="cake" aria-label="Tiup lilin">
+      <svg viewBox="0 0 200 190" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="176" rx="90" ry="10" fill="rgba(0,0,0,.2)"/>
+        <rect x="22" y="110" width="156" height="60" rx="12" fill="#ffb3c6" stroke="#3b2a20" stroke-width="3"/>
+        <rect x="40" y="70" width="120" height="44" rx="10" fill="#fff1d6" stroke="#3b2a20" stroke-width="3"/>
+        <path d="M40 84q10 16 20 0t20 0 20 0 20 0 20 0v-8H40z" fill="#8d5a44" stroke="#3b2a20" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M22 124q11 14 22 0t22 0 22 0 22 0 22 0 22 0 22 0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        <rect x="94" y="40" width="12" height="32" fill="#8ecae6" stroke="#3b2a20" stroke-width="3"/>
+        <g class="flame"><path d="M100 12q-14 16 0 28q14-12 0-28z" fill="#ffd166" stroke="#3b2a20" stroke-width="3"/></g>
+        <circle cx="60" cy="150" r="5" fill="#ffd166"/><circle cx="100" cy="150" r="5" fill="#9be3c7"/><circle cx="140" cy="150" r="5" fill="#8ecae6"/>
+      </svg>
+    </button>
+    <div id="wish"></div>
+  </div>
+
+  <footer>you will always be my favorite girl 💛</footer>
+</main>
+<canvas id="fx"></canvas>
+
+<script>
+// ===== EDIT BAGIAN INI =====
+var NAMA = "Diandra Dwii";          // nama mantan / panggilannya
+var PENGIRIM = "dy";  // namamu
+// ===========================
+document.getElementById('nama').textContent = NAMA;
+document.getElementById('halo').textContent = 'Halo, ' + NAMA;
+document.getElementById('dari').textContent = '— ' + PENGIRIM;
+
+var cv = document.getElementById('fx'), cx = cv.getContext('2d'), bits = [], run = false;
+function size(){cv.width = innerWidth; cv.height = innerHeight;}
+size(); addEventListener('resize', size);
+function boom(n){
+  var cols = ['#ff8fab','#ffd166','#9be3c7','#8ecae6','#fff'];
+  for(var i=0;i<n;i++) bits.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:Math.random()*-15-3,
+    s:Math.random()*8+4,c:cols[i%5],r:Math.random()*6,l:130+Math.random()*60});
+  if(!run){run=true;tick();}
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  bits = bits.filter(function(b){return b.l-- > 0;});
+  bits.forEach(function(b){b.vy+=.35;b.x+=b.vx;b.y+=b.vy;b.r+=.2;
+    cx.save();cx.translate(b.x,b.y);cx.rotate(b.r);cx.fillStyle=b.c;cx.fillRect(-b.s/2,-b.s/4,b.s,b.s/2);cx.restore();});
+  if(bits.length) requestAnimationFrame(tick); else run=false;
+}
+function open(){
+  document.getElementById('cover').classList.add('gone');
+  document.getElementById('main').classList.add('show');
+  boom(140);
+}
+document.getElementById('open').onclick = open;
+document.getElementById('open2').onclick = open;
+document.getElementById('cake').onclick = function(){
+  var box = document.getElementById('cakebox');
+  if(box.classList.contains('out')) return;
+  box.classList.add('out');
+  document.getElementById('wish').textContent = ' Im still in love with you 💛';
+  boom(160);
+};
+</script>
+</body>
+</html>
